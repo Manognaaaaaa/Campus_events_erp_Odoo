@@ -2,12 +2,25 @@
 <odoo>
     <data>
 
+        <!-- Campus Club Search View (minimal, safe) -->
+        <record id="view_campus_club_search" model="ir.ui.view">
+            <field name="name">campus.club.search</field>
+            <field name="model">campus.club</field>
+            <field name="arch" type="xml">
+                <search string="Search Clubs">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="faculty_advisor_id"/>
+                </search>
+            </field>
+        </record>
+
         <!-- Campus Club List View -->
         <record id="view_campus_club_tree" model="ir.ui.view">
             <field name="name">campus.club.list</field>
             <field name="model">campus.club</field>
             <field name="arch" type="xml">
-                <list string="Clubs">
+                <list string="Clubs" default_order="name asc">
                     <field name="name"/>
                     <field name="code"/>
                     <field name="faculty_advisor_id"/>
@@ -69,12 +82,24 @@
             </field>
         </record>
 
+        <!-- Campus Club Member Search View (minimal, safe) -->
+        <record id="view_campus_club_member_search" model="ir.ui.view">
+            <field name="name">campus.club.member.search</field>
+            <field name="model">campus.club.member</field>
+            <field name="arch" type="xml">
+                <search string="Search Members">
+                    <field name="partner_id"/>
+                    <field name="club_id"/>
+                </search>
+            </field>
+        </record>
+
         <!-- Campus Club Member List View -->
         <record id="view_campus_club_member_tree" model="ir.ui.view">
             <field name="name">campus.club.member.list</field>
             <field name="model">campus.club.member</field>
             <field name="arch" type="xml">
-                <list string="Members">
+                <list string="Members" default_order="club_id,role desc">
                     <field name="partner_id"/>
                     <field name="club_id"/>
                     <field name="role"/>
