@@ -29,7 +29,7 @@
             </field>
         </record>
 
-        <!-- Campus Club Form View -->
+        <!-- Campus Club Form View (no notebook) -->
         <record id="view_campus_club_form" model="ir.ui.view">
             <field name="name">campus.club.form</field>
             <field name="model">campus.club</field>
@@ -52,45 +52,12 @@
                             <field name="currency_id"/>
                             <field name="active"/>
                         </group>
-                        <notebook>
-                            <page string="Events">
-                                <field name="event_ids" nolabel="1">
-                                    <list string="Events" edit="false">
-                                        <field name="name"/>
-                                        <field name="date"/>
-                                        <field name="state"/>
-                                    </list>
-                                </field>
-                            </page>
-                            <page string="Members">
-                                <field name="member_ids" nolabel="1">
-                                    <list string="Members" editable="bottom">
-                                        <field name="partner_id"/>
-                                        <field name="role"/>
-                                        <field name="join_date"/>
-                                        <field name="is_core"/>
-                                    </list>
-                                </field>
-                            </page>
-                        </notebook>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_ids" widget="mail_thread"/>
                         <field name="activity_ids" widget="mail_activity"/>
                     </div>
                 </form>
-            </field>
-        </record>
-
-        <!-- Campus Club Member Search View (minimal, safe) -->
-        <record id="view_campus_club_member_search" model="ir.ui.view">
-            <field name="name">campus.club.member.search</field>
-            <field name="model">campus.club.member</field>
-            <field name="arch" type="xml">
-                <search string="Search Members">
-                    <field name="partner_id"/>
-                    <field name="club_id"/>
-                </search>
             </field>
         </record>
 
