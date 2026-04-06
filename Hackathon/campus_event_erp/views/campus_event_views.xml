@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Campus Event List View -->
+        <record id="view_campus_event_tree" model="ir.ui.view">
+            <field name="name">campus.event.list</field>
+            <field name="model">campus.event</field>
+            <field name="arch" type="xml">
+                <list string="Events">
+                    <field name="name"/>
+                    <field name="club_id"/>
+                    <field name="date"/>
+                    <field name="venue"/>
+                    <field name="state"/>
+                    <field name="planned_budget_total"/>
+                    <field name="actual_spent_total"/>
+                    <field name="sponsorship_total"/>
+                    <field name="net_cost"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Campus Event Kanban View -->
+        <record id="view_campus_event_kanban" model="ir.ui.view">
+            <field name="name">campus.event.kanban</field>
+            <field name="model">campus.event</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="state" class="o_kanban_small_columns">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_card">
+                                <div class="oe_kanban_content">
+                                    <strong><field name="name"/></strong>
+                                    <div>Club: <field name="club_id"/></div>
+                                    <div>Date: <field name="date"/></div>
+                                    <div>Budget: <field name="planned_budget_total"/></div>
+                                    <div>Spent: <field name="actual_spent_total"/></div>
+                                    <div>Sponsors: <field name="sponsorship_total"/></div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Campus Event Form View -->
+        <record id="view_campus_event_form" model="ir.ui.view">
+            <field name="name">campus.event.form</field>
+            <field name="model">campus.event</field>
+            <field name="arch" type="xml">
+                <form string="Event">
+                    <header>
+                        <button name="action_to_approve" type="object" string="Submit for Approval" class="btn-primary"/>
+                        <button name="action_approve" type="object" string="Approve" class="btn-primary"/>
+                        <button name="action_complete" type="object" string="Complete" class="btn-primary"/>
+                        <button name="action_cancel" type="object" string="Cancel"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <div class="oe_stat_items">
+                                <div class="oe_stat_item">
+                                    <span class="oe_stat_text">Planned Budget:</span>
+                                    <span class="oe_stat_value"><field name="planned_budget_total"/></span>
+                                </div>
+                                <div class="oe_stat_item">
+                                    <span class="oe_stat_text">Actual Spent:</span>
+                                    <span class="oe_stat_value"><field name="actual_spent_total"/></span>
+                                </div>
+                                <div class="oe_stat_item">
+                                    <span class="oe_stat_text">Sponsorship:</span>
+                                    <span class="oe_stat_value"><field name="sponsorship_total"/></span>
+                                </div>
+                                <div class="oe_stat_item">
+                                    <span class="oe_stat_text">Net Cost:</span>
+                                    <span class="oe_stat_value"><field name="net_cost"/></span>
+                                </div>
+                            </div>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="club_id"/>
+                                <field name="date"/>
+                                <field name="end_date"/>
+                            </group>
+                            <group>
+                                <field name="venue"/>
+                                <field name="planned_attendees"/>
+                                <field name="actual_attendees"/>
+                                <field name="currency_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Budget">
+                                <field name="budget_line_ids" nolabel="1">
+                                    <list string="Budget Lines" editable="bottom">
+                                        <field name="name"/>
+                                        <field name="category"/>
+                                        <field name="amount"/>
+                                        <field name="currency_id"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Purchase Requests">
+                                <field name="purchase_request_ids" nolabel="1">
+                                    <list string="Purchase Requests" edit="false">
+                                        <field name="name"/>
+                                        <field name="category"/>
+                                        <field name="vendor_id"/>
+                                        <field name="amount"/>
+                                        <field name="state"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Sponsors">
+                                <field name="sponsor_ids" nolabel="1">
+                                    <list string="Sponsors" editable="bottom">
+                                        <field name="name"/>
+                                        <field name="partner_id"/>
+                                        <field name="amount"/>
+                                        <field name="benefits"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_ids" widget="mail_thread"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

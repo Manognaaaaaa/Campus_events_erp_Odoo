@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Campus Purchase Request List View -->
+        <record id="view_campus_purchase_request_tree" model="ir.ui.view">
+            <field name="name">campus.purchase.request.list</field>
+            <field name="model">campus.purchase.request</field>
+            <field name="arch" type="xml">
+                <list string="Purchase Requests">
+                    <field name="name"/>
+                    <field name="event_id"/>
+                    <field name="category"/>
+                    <field name="vendor_id"/>
+                    <field name="amount"/>
+                    <field name="state"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Campus Purchase Request Form View -->
+        <record id="view_campus_purchase_request_form" model="ir.ui.view">
+            <field name="name">campus.purchase.request.form</field>
+            <field name="model">campus.purchase.request</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Request">
+                    <header>
+                        <button name="action_submit" type="object" string="Submit" class="btn-primary"/>
+                        <button name="action_approve" type="object" string="Approve" class="btn-primary"/>
+                        <button name="action_reject" type="object" string="Reject"/>
+                        <button name="action_paid" type="object" string="Mark as Paid" class="btn-primary"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="event_id"/>
+                                <field name="vendor_id"/>
+                                <field name="requester_id"/>
+                            </group>
+                            <group>
+                                <field name="category"/>
+                                <field name="amount"/>
+                                <field name="currency_id"/>
+                            </group>
+                        </group>
+                        <field name="description" placeholder="Description of purchase..."/>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_ids" widget="mail_thread"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_campus_club_manager,Campus Club - Manager,model_campus_club,campus_event_erp.group_campus_event_manager,1,1,1,1
+access_campus_club_public,Campus Club - Public,model_campus_club,,1,0,0,0
+access_campus_club_member_manager,Campus Club Member - Manager,model_campus_club_member,campus_event_erp.group_campus_event_manager,1,1,1,1
+access_campus_club_member_public,Campus Club Member - Public,model_campus_club_member,,1,0,0,0
+access_campus_event_manager,Campus Event - Manager,model_campus_event,campus_event_erp.group_campus_event_manager,1,1,1,1
+access_campus_event_public,Campus Event - Public,model_campus_event,,1,0,0,0
+access_campus_event_budget_line_manager,Campus Event Budget Line - Manager,model_campus_event_budget_line,campus_event_erp.group_campus_event_manager,1,1,1,1
+access_campus_event_budget_line_public,Campus Event Budget Line - Public,model_campus_event_budget_line,,1,0,0,0
+access_campus_sponsor_manager,Campus Sponsor - Manager,model_campus_sponsor,campus_event_erp.group_campus_event_manager,1,1,1,1
+access_campus_sponsor_public,Campus Sponsor - Public,model_campus_sponsor,,1,0,0,0
+access_campus_purchase_request_manager,Campus Purchase Request - Manager,model_campus_purchase_request,campus_event_erp.group_campus_event_manager,1,1,1,1
+access_campus_purchase_request_public,Campus Purchase Request - Public,model_campus_purchase_request,,1,0,0,0

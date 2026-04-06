@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Campus Event Pivot View for Reporting -->
+        <record id="view_campus_event_pivot" model="ir.ui.view">
+            <field name="name">campus.event.pivot</field>
+            <field name="model">campus.event</field>
+            <field name="arch" type="xml">
+                <pivot string="Club Spending Report">
+                    <field name="club_id" type="row"/>
+                    <field name="date" type="col" interval="month"/>
+                    <field name="planned_budget_total" type="measure"/>
+                    <field name="actual_spent_total" type="measure"/>
+                    <field name="sponsorship_total" type="measure"/>
+                    <field name="net_cost" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+    </data>
+</odoo>

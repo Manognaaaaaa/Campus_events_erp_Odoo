@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Campus Club List View -->
+        <record id="view_campus_club_tree" model="ir.ui.view">
+            <field name="name">campus.club.list</field>
+            <field name="model">campus.club</field>
+            <field name="arch" type="xml">
+                <list string="Clubs">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="faculty_advisor_id"/>
+                    <field name="total_budget"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Campus Club Form View -->
+        <record id="view_campus_club_form" model="ir.ui.view">
+            <field name="name">campus.club.form</field>
+            <field name="model">campus.club</field>
+            <field name="arch" type="xml">
+                <form string="Club">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_open_events" type="object" class="oe_stat_button" icon="fa-calendar">
+                                <field string="Events" name="event_ids" widget="statinfo"/>
+                            </button>
+                            <button name="action_open_members" type="object" class="oe_stat_button" icon="fa-users">
+                                <field string="Members" name="member_ids" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="faculty_advisor_id"/>
+                            <field name="total_budget"/>
+                            <field name="currency_id"/>
+                            <field name="active"/>
+                        </group>
+                        <notebook>
+                            <page string="Events">
+                                <field name="event_ids" nolabel="1">
+                                    <list string="Events" edit="false">
+                                        <field name="name"/>
+                                        <field name="date"/>
+                                        <field name="state"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Members">
+                                <field name="member_ids" nolabel="1">
+                                    <list string="Members" editable="bottom">
+                                        <field name="partner_id"/>
+                                        <field name="role"/>
+                                        <field name="join_date"/>
+                                        <field name="is_core"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_ids" widget="mail_thread"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Campus Club Member List View -->
+        <record id="view_campus_club_member_tree" model="ir.ui.view">
+            <field name="name">campus.club.member.list</field>
+            <field name="model">campus.club.member</field>
+            <field name="arch" type="xml">
+                <list string="Members">
+                    <field name="partner_id"/>
+                    <field name="club_id"/>
+                    <field name="role"/>
+                    <field name="join_date"/>
+                    <field name="is_core"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Campus Club Member Form View -->
+        <record id="view_campus_club_member_form" model="ir.ui.view">
+            <field name="name">campus.club.member.form</field>
+            <field name="model">campus.club.member</field>
+            <field name="arch" type="xml">
+                <form string="Member">
+                    <sheet>
+                        <group>
+                            <field name="club_id"/>
+                            <field name="partner_id"/>
+                            <field name="role"/>
+                            <field name="join_date"/>
+                            <field name="is_core"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

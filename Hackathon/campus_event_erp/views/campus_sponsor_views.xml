@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Campus Sponsor List View -->
+        <record id="view_campus_sponsor_tree" model="ir.ui.view">
+            <field name="name">campus.sponsor.list</field>
+            <field name="model">campus.sponsor</field>
+            <field name="arch" type="xml">
+                <list string="Sponsors">
+                    <field name="name"/>
+                    <field name="event_id"/>
+                    <field name="partner_id"/>
+                    <field name="amount"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Campus Sponsor Form View -->
+        <record id="view_campus_sponsor_form" model="ir.ui.view">
+            <field name="name">campus.sponsor.form</field>
+            <field name="model">campus.sponsor</field>
+            <field name="arch" type="xml">
+                <form string="Sponsor">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="event_id"/>
+                            <field name="partner_id"/>
+                            <field name="amount"/>
+                            <field name="currency_id"/>
+                        </group>
+                        <field name="benefits" placeholder="Benefits and inclusion details..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
